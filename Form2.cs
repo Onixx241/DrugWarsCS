@@ -15,7 +15,7 @@ namespace DrugWarsCS
     //initial prices implemented, next implement buy/sell forms etc.
     public partial class Form2 : Form
     {
-        bool GameLoop = true;
+        
         public static Player play = new Player(Form1.Name);
 
         public Form2()
@@ -25,6 +25,7 @@ namespace DrugWarsCS
 
             label1.Text = 0.ToString();
             label2.Text = play.Money.ToString();
+            label3.Text = play.CurrentLocation.ToString();
             //continue here with dictionary
 
             label6.Text = play.DrugPricePair["w"].ToString();
@@ -52,7 +53,7 @@ namespace DrugWarsCS
         {
             //buybutton
             BuyForm newbuy = new BuyForm();
-            newbuy.Show();
+            newbuy.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -76,12 +77,15 @@ namespace DrugWarsCS
 
         public int Level { get; set; }//Implement this Last
 
+        public Location CurrentLocation { get; set; }
+
         public Player(string name)
         {
 
             this.Name = name;
             this.Money = 5000;
             this.day = 0;
+            this.CurrentLocation = Location.Bronx; 
             DrugPricePair.Add("w", this.RandomizePriceBetween(111,193));
             DrugPricePair.Add("WAmount", 0);
             DrugPricePair.Add("h", this.RandomizePriceBetween(418, 512));
@@ -158,7 +162,7 @@ namespace DrugWarsCS
         Heroin,
         Meth
     }
-    enum Location
+    public enum Location
     {
         Bronx,
         Brooklyn,
