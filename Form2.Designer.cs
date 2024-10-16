@@ -204,6 +204,7 @@
             // 
             // button3
             // 
+            button3.ForeColor = Color.Black;
             button3.Location = new Point(3, 316);
             button3.Name = "button3";
             button3.Size = new Size(94, 29);
@@ -242,6 +243,7 @@
             button1.TabIndex = 5;
             button1.Text = "Bronx";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // button4
             // 
@@ -253,6 +255,7 @@
             button4.TabIndex = 6;
             button4.Text = "Brooklyn";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
@@ -264,6 +267,7 @@
             button5.TabIndex = 7;
             button5.Text = "Manhattan";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
@@ -275,6 +279,7 @@
             button6.TabIndex = 8;
             button6.Text = "Queens";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // Form2
             // 
@@ -319,11 +324,11 @@
         private Label label9;
         private Label label10;
         private Label label12;
-        public static Label label2;
         private Label label13;
         private Button button1;
         private Button button4;
         private Button button5;
         private Button button6;
+        public Label label2;
     }
 }

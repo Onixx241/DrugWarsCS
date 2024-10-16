@@ -16,18 +16,18 @@ namespace DrugWarsCS
     //initial prices implemented, next implement buy/sell forms etc.
     public partial class Form2 : Form
     {
-        
+
         public static Player play = new Player(Form1.Name);
 
         public Form2()
         {
             //label1=day,label2=money,label3=location
             InitializeComponent();
-            
+
             label1.Text = $"Day: {play.day}";
             label2.Text = $"Cash: {play.Money.ToString()}";
             label3.Text = play.CurrentLocation.ToString();
-            //continue here with dictionary
+            
 
             label6.Text = play.DrugPricePair["w"].ToString();
 
@@ -40,17 +40,6 @@ namespace DrugWarsCS
         }
 
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //advance day, soon to be change location, also need to randomize price on location change.
-            // change this to a label.
-            // 4 buttons for each borough
-            // advances day once a location
-            play.day += 1;
-            label1.Text = $"Day: {play.day}";
-            label12.Text = play.UpdateHPrice().ToString();
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -66,6 +55,125 @@ namespace DrugWarsCS
             newsell.ShowDialog();
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            //bronx
+            Debug.WriteLine("Button Pressed");
+
+            play.CurrentLocation = DrugWarsCS.Location.Bronx;
+
+
+
+            play.day += 1;
+
+            label1.Text = $"Day: {play.day}";
+
+            play.UpdateWPrice();
+            play.UpdateCPrice();
+            play.UpdateMPrice();
+            play.UpdateHPrice();
+
+            //update labels
+            label6.Text = play.DrugPricePair["w"].ToString();
+
+            label7.Text = play.DrugPricePair["c"].ToString();
+
+            label10.Text = play.DrugPricePair["m"].ToString();
+
+            label12.Text = play.DrugPricePair["h"].ToString();
+
+            label3.Text = play.CurrentLocation.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //brooklyn 
+            play.CurrentLocation = DrugWarsCS.Location.Brooklyn;
+
+            Debug.WriteLine("Button Pressed");
+            play.day += 1;
+
+            label1.Text = $"Day: {play.day}";
+
+            play.UpdateWPrice();
+            play.UpdateCPrice();
+            play.UpdateMPrice();
+            play.UpdateHPrice();
+
+            //update labels
+            label6.Text = play.DrugPricePair["w"].ToString();
+
+            label7.Text = play.DrugPricePair["c"].ToString();
+
+            label10.Text = play.DrugPricePair["m"].ToString();
+
+            label12.Text = play.DrugPricePair["h"].ToString();
+
+            label3.Text = play.CurrentLocation.ToString();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //manhattan 
+
+            Debug.WriteLine("Button Pressed");
+
+            play.CurrentLocation = DrugWarsCS.Location.Manhattan;
+
+
+
+            play.day += 1;
+
+            label1.Text = $"Day: {play.day}";
+
+            play.UpdateWPrice();
+            play.UpdateCPrice();
+            play.UpdateMPrice();
+            play.UpdateHPrice();
+
+            //update labels
+            label6.Text = play.DrugPricePair["w"].ToString();
+
+            label7.Text = play.DrugPricePair["c"].ToString();
+
+            label10.Text = play.DrugPricePair["m"].ToString();
+
+            label12.Text = play.DrugPricePair["h"].ToString();
+
+            label3.Text = play.CurrentLocation.ToString();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //queens
+
+            Debug.WriteLine("Button Pressed");
+
+            play.CurrentLocation = DrugWarsCS.Location.Queens;
+
+
+
+            play.day += 1;
+
+            label1.Text = $"Day: {play.day}";
+
+            play.UpdateWPrice();
+            play.UpdateCPrice();
+            play.UpdateMPrice();
+            play.UpdateHPrice();
+
+            //update labels
+            label6.Text = play.DrugPricePair["w"].ToString();
+
+            label7.Text = play.DrugPricePair["c"].ToString();
+
+            label10.Text = play.DrugPricePair["m"].ToString();
+
+            label12.Text = play.DrugPricePair["h"].ToString();
+
+            label3.Text = play.CurrentLocation.ToString();
+        }
     }
 
     public class Player
@@ -160,6 +268,8 @@ namespace DrugWarsCS
         {
             this.day += 1;
         }
+
+        //add skyrocket and tank price functions
 
     }
 
