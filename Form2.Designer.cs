@@ -43,7 +43,11 @@
             label7 = new Label();
             button3 = new Button();
             label6 = new Label();
+            label13 = new Label();
             button1 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -103,6 +107,7 @@
             splitContainer1.Panel2.Controls.Add(label7);
             splitContainer1.Panel2.Controls.Add(button3);
             splitContainer1.Panel2.Controls.Add(label6);
+            splitContainer1.Panel2.ForeColor = Color.DarkCyan;
             splitContainer1.Size = new Size(1118, 345);
             splitContainer1.SplitterDistance = 372;
             splitContainer1.TabIndex = 3;
@@ -217,15 +222,59 @@
             label6.TabIndex = 0;
             label6.Text = "weed_price";
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.ForeColor = Color.DarkCyan;
+            label13.Location = new Point(331, 9);
+            label13.Name = "label13";
+            label13.Size = new Size(96, 20);
+            label13.TabIndex = 4;
+            label13.Text = "Advance Day";
+            // 
             // button1
             // 
-            button1.Location = new Point(323, 12);
+            button1.BackColor = SystemColors.ControlDarkDark;
+            button1.ForeColor = Color.DarkCyan;
+            button1.Location = new Point(221, 32);
             button1.Name = "button1";
-            button1.Size = new Size(111, 29);
-            button1.TabIndex = 4;
-            button1.Text = "Advance Day";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Size = new Size(64, 29);
+            button1.TabIndex = 5;
+            button1.Text = "Bronx";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = SystemColors.ControlDarkDark;
+            button4.ForeColor = Color.DarkCyan;
+            button4.Location = new Point(291, 32);
+            button4.Name = "button4";
+            button4.Size = new Size(80, 29);
+            button4.TabIndex = 6;
+            button4.Text = "Brooklyn";
+            button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            button5.BackColor = SystemColors.ControlDarkDark;
+            button5.ForeColor = Color.DarkCyan;
+            button5.Location = new Point(377, 32);
+            button5.Name = "button5";
+            button5.Size = new Size(98, 29);
+            button5.TabIndex = 7;
+            button5.Text = "Manhattan";
+            button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            button6.BackColor = SystemColors.ControlDarkDark;
+            button6.ForeColor = Color.DarkCyan;
+            button6.Location = new Point(481, 32);
+            button6.Name = "button6";
+            button6.Size = new Size(68, 29);
+            button6.TabIndex = 8;
+            button6.Text = "Queens";
+            button6.UseVisualStyleBackColor = false;
             // 
             // Form2
             // 
@@ -233,11 +282,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(800, 450);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(button4);
+            Controls.Add(button1);
+            Controls.Add(label13);
             Controls.Add(splitContainer1);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button1);
             Name = "Form2";
             Text = "Form2";
             splitContainer1.Panel1.ResumeLayout(false);
@@ -253,10 +306,8 @@
         #endregion
 
         private Label label1;
-        private Label label2;
         private Label label3;
         private SplitContainer splitContainer1;
-        private Button button1;
         private Label label4;
         private Label label5;
         private Label label6;
@@ -268,5 +319,11 @@
         private Label label9;
         private Label label10;
         private Label label12;
+        public static Label label2;
+        private Label label13;
+        private Button button1;
+        private Button button4;
+        private Button button5;
+        private Button button6;
     }
 }

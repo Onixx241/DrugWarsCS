@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,9 +23,9 @@ namespace DrugWarsCS
         {
             //label1=day,label2=money,label3=location
             InitializeComponent();
-
-            label1.Text = 0.ToString();
-            label2.Text = play.Money.ToString();
+            
+            label1.Text = $"Day: {play.day}";
+            label2.Text = $"Cash: {play.Money.ToString()}";
             label3.Text = play.CurrentLocation.ToString();
             //continue here with dictionary
 
@@ -42,11 +43,13 @@ namespace DrugWarsCS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //advance day
+            //advance day, soon to be change location, also need to randomize price on location change.
+            // change this to a label.
+            // 4 buttons for each borough
+            // advances day once a location
             play.day += 1;
-
-            label1.Text = play.day.ToString();
-
+            label1.Text = $"Day: {play.day}";
+            label12.Text = play.UpdateHPrice().ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -55,11 +58,14 @@ namespace DrugWarsCS
             BuyForm newbuy = new BuyForm();
             newbuy.ShowDialog();
         }
-
+        //merge these two ?
         private void button3_Click(object sender, EventArgs e)
         {
             //sellbutton
+            SellForm newsell = new SellForm();
+            newsell.ShowDialog();
         }
+
     }
 
     public class Player
@@ -68,14 +74,16 @@ namespace DrugWarsCS
         public int InventorySpace { get; set; }
         public int day { get; set; }
         public int Money { get; set; }
-        
+
+        public uint LoanAmount = 0;
+
+        public byte HighScore { get;set; }
+        public byte MinScore { get;set; }
+
         public Dictionary<string,int> DrugPricePair = new Dictionary<string,int>();
+        public Dictionary<string, uint> DrugAmountPair = new Dictionary<string, uint>();
 
-
-        // 0 = coke , 1 = weed, 2 = heroin, 3 = pills , 4 = meth
-        public int[] drugs = { 0, 0, 0, 0 };
-
-        public int Level { get; set; }//Implement this Last
+        public int Level { get; set; }//Implement this Last, only award xp on drugs sold not bought
 
         public Location CurrentLocation { get; set; }
 
@@ -83,17 +91,24 @@ namespace DrugWarsCS
         {
 
             this.Name = name;
-            this.Money = 5000;
+            this.Money = 1500;
+            this.HighScore = 0;
+            this.MinScore = 0;
             this.day = 0;
             this.CurrentLocation = Location.Bronx; 
             DrugPricePair.Add("w", this.RandomizePriceBetween(111,193));
-            DrugPricePair.Add("WAmount", 0);
+
             DrugPricePair.Add("h", this.RandomizePriceBetween(418, 512));
-            DrugPricePair.Add("HAmount", 0);
+
             DrugPricePair.Add("c", this.RandomizePriceBetween(700, 917));
-            DrugPricePair.Add("CAmount", 0);
+
             DrugPricePair.Add("m", this.RandomizePriceBetween(215, 381));
-            DrugPricePair.Add("MAmount", 0);
+
+            DrugAmountPair.Add("w", 0);
+            DrugAmountPair.Add("h", 0);
+            DrugAmountPair.Add("c", 0);
+            DrugAmountPair.Add("m", 0);
+
             Debug.Print("Player Created!\nPrices Generated!");
             
         }
@@ -103,25 +118,25 @@ namespace DrugWarsCS
             this.Money += amount;
         }
 
-        public void UpdateWPrice() 
+        public int UpdateWPrice() 
         {
-            this.DrugPricePair["w"] = this.RandomizePriceBetween(111, 193);
+            return this.DrugPricePair["w"] = this.RandomizePriceBetween(111, 193);
         }
-        public void UpdateHPrice() 
+        public int UpdateHPrice() 
         {
-            this.DrugPricePair["h"] = this.RandomizePriceBetween(418, 512);
+            return this.DrugPricePair["h"] = this.RandomizePriceBetween(418, 512);
         }
-        public void UpdateCPrice() 
+        public int UpdateCPrice() 
         {
-            this.DrugPricePair["c"] = this.RandomizePriceBetween(700, 917);
+            return this.DrugPricePair["c"] = this.RandomizePriceBetween(700, 917);
         }
-        public void UpdateMPrice() 
+        public int UpdateMPrice() 
         {
-            this.DrugPricePair["m"] = this.RandomizePriceBetween(215, 381);
+            return this.DrugPricePair["m"] = this.RandomizePriceBetween(215, 381);
         }
-        public void SpecificPriceSet(int price, string choice) 
+        public int SpecificPriceSet(int price, string choice) 
         {
-            this.DrugPricePair[choice] = price;
+            return this.DrugPricePair[choice] = price;
         }
 
         public int RollDice()
@@ -147,21 +162,9 @@ namespace DrugWarsCS
             this.day += 1;
         }
 
-        public void AddDrug(int index, int amount)
-        {
-            this.drugs[index] += amount;
-        }
-
-
     }
 
-    enum Drugs
-    {
-        Coke,
-        Weed,
-        Heroin,
-        Meth
-    }
+    
     public enum Location
     {
         Bronx,
