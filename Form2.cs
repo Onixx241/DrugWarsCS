@@ -86,7 +86,6 @@ namespace DrugWarsCS
         public int Level { get; set; }//Implement this Last, only award xp on drugs sold not bought
 
         public Location CurrentLocation { get; set; }
-
         public Player(string name)
         {
 

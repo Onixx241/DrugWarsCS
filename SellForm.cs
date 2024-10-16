@@ -13,6 +13,7 @@ namespace DrugWarsCS
 {
     public partial class SellForm : Form
     {
+        // make all values show up on startup
         public SellForm()
         {
             InitializeComponent();
@@ -24,11 +25,11 @@ namespace DrugWarsCS
         //try to keep switch totally organized, everything should be clear and serve a clear purpose.
         public void SellDrug(string DrugLetter)
         {
+            //wrap in another try catch smh
+
             if (textBox1.Text != null && Convert.ToInt32(textBox1.Text) >= 1 && Form2.play.DrugAmountPair[DrugLetter] >= Convert.ToUInt32(textBox1.Text))
             {
-                // weed selling is working , however it is selling for way too much .
-                // maybe it has to do with the multiplication of the amount by the price.
-                // if i have 2 and im selling each at 150 i should get back 300 so thats amount * price so why isnt it working.
+                
                 switch (DrugLetter)
                 {
 
@@ -37,7 +38,7 @@ namespace DrugWarsCS
                         Form2.play.DrugAmountPair[DrugLetter] -= Convert.ToUInt32(textBox1.Text);
 
 
-                        //unsigned int by signed int multiplication messing it up maybe ?
+                        
                         Debug.WriteLine($"");
                         Debug.WriteLine($"{textBox1.Text}");
                         Debug.WriteLine($"{Form2.play.DrugPricePair["w"]}");
