@@ -13,7 +13,7 @@ using DrugWarsCS;
 
 namespace DrugWarsCS
 {
-    //initial prices implemented, next implement buy/sell forms etc.
+    //buying/selling implemented, days/boroughs and price randomization implemented , add quantity labels to form 2. fix negative cash issue or add debt and implement skyrocket AND pricecrash then officer and stash etc...
     public partial class Form2 : Form
     {
 
@@ -179,14 +179,13 @@ namespace DrugWarsCS
     public class Player
     {
         public string Name;
-        public int InventorySpace { get; set; }
+        public int InventorySpace { get; set; } // not implemented
         public int day { get; set; }
         public int Money { get; set; }
 
-        public uint LoanAmount = 0;
-
-        public byte HighScore { get;set; }
-        public byte MinScore { get;set; }
+        public uint LoanAmount = 0; // not implemented
+        public byte HighScore { get;set; }//
+        public byte MinScore { get;set; }// both this and high score not implemented
 
         public Dictionary<string,int> DrugPricePair = new Dictionary<string,int>();
         public Dictionary<string, uint> DrugAmountPair = new Dictionary<string, uint>();
@@ -246,7 +245,7 @@ namespace DrugWarsCS
             return this.DrugPricePair[choice] = price;
         }
 
-        public int RollDice()
+        public int RollDice()// useless?
         {
             Random rando = new Random();
             return rando.Next(0, 10);

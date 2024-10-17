@@ -59,13 +59,15 @@ namespace DrugWarsCS
         private void BuyDrug(string DrugLetter)
         {
             //fix going to zero issue, if not add a debt system or something.
-            try {
+            try 
+            {
                 if (textBox1 != null && Convert.ToInt32(textBox1.Text) > 0 && Form2.play.Money > Form2.play.DrugPricePair[DrugLetter] && Form2.play.Money != 0 && Form2.play.Money > 0)
                 {
 
                     switch (DrugLetter)
                     {
                         case "h":
+                            //if(Drugpricepair * amount > money or money not enough do not run , try wrapping every case in this if else statement)
                             try
                             {
                                 Form2.play.DrugAmountPair["h"] += Convert.ToUInt32(textBox1.Text);
@@ -74,6 +76,7 @@ namespace DrugWarsCS
                                 label3.Text = $"Cash: {Form2.play.Money}";
                                 label4.Text = Form2.play.DrugAmountPair["h"].ToString();
                             }
+
                             catch
                             {
                             }

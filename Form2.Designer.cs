@@ -297,7 +297,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Form2";
-            Text = "Form2";
+            Text = "Drug Wars";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
@@ -329,6 +329,6 @@
         private Button button4;
         private Button button5;
         private Button button6;
-        public Label label2;
+        public static Label label2;
     }
 }

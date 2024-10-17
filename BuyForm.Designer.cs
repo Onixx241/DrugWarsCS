@@ -174,7 +174,7 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Name = "BuyForm";
-            Text = "BuyForm";
+            Text = "Buy ";
             ResumeLayout(false);
             PerformLayout();
         }
